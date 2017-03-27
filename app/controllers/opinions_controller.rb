@@ -26,12 +26,13 @@ class OpinionsController < ApplicationController
   # POST /opinions
   # POST /opinions.json
   def create
-    @opinion = Opinion.new(opinion_params)
-    @opinion.card = Card.find(params[:card_id])
+  @opinion = Opinion.new(opinion_params)
+  @opinion.user_id = current_user.id
+  @opinion.card = Card.find(params[:card_id])
 
     respond_to do |format|
       if @opinion.save
-        format.html { redirect_to opinion_path(opinion_params, @card), notice: 'Opinion was successfully created.' }
+        format.html { redirect_to opinion_path(@opinion.id), notice: 'Opinion was successfully created.' }
         format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :new }
@@ -47,7 +48,7 @@ class OpinionsController < ApplicationController
   def update
     respond_to do |format|
       if @opinion.update(opinion_params)
-        format.html { redirect_to opinion_path(@card, opinion_params), notice: 'Opinion was successfully updated.' }
+        format.html { redirect_to opinion_path(opinion_params, @card), notice: 'Opinion was successfully updated.' }
         format.json { render :show, status: :ok, location: @opinion }
       else
         format.html { render :edit }
@@ -74,7 +75,7 @@ class OpinionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def opinion_params
-      params.require(:opinion).permit(:user_id, :card_id)
+      params.require(:opinion).permit(:rate)
     end
 
 end
