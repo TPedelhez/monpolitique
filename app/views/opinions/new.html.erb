@@ -1,5 +1,33 @@
-<h1>New Opinion</h1>
+
+<div class="banner" style="background-color: #008489; background-position: center;">
+
+
+<div class="card card-flexbox">
+    <div class="card-face card-front">
+      <div class="card-wrapper">
+        <div class="card-left-bar "></div>
+        <p class="card-day-title ">
+          THEME
+        </p>
+        <p class="card-instructions">
+          <a href="#" class="card-action card-action-flip hidden-xs" title="Click (or hit space/enter) to flip" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <i class="fa fa-refresh"></i>
+          </a>
+        </p>
+        <div class="card-content" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+          <%= @card.candidate %>
+          <br>
+          <%= @card.description %>
+
+        </div>
+      </div>
+    </div>
+
 
 <%= render 'form', opinion: [@card, @opinion] %>
 
+
+</div>
+
 <%= link_to 'Back', cards_path %>
+
