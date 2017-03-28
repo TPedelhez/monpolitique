@@ -30,6 +30,7 @@ class OpinionsController < ApplicationController
   @opinion.user_id = current_user.id
   @opinion.card = Card.find(params[:card_id])
 
+
     respond_to do |format|
       if @opinion.save
         format.html { redirect_to opinion_path(@opinion.id), notice: 'Opinion was successfully created.' }
