@@ -2,7 +2,6 @@
   color: white;
   text-align: center;
   padding-top: 1vh;
-  height: 90vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   // display: flex;
@@ -430,10 +429,10 @@ padding-top: 5vh;
 }
 
 .home-title {
-      font-size: 3em;
+    font-size: 51px;
     font-weight: bold;
     text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-    margin-top: 2em;
+    margin-top: 1em;
     color: white;
 }
 
@@ -443,20 +442,20 @@ padding-top: 5vh;
   border-radius: 2px;
   font-weight: lighter;
   opacity: 1;
-  background-color: #00E7A9;
+  background-color: #FF5A5F;
 }
 
 .activity-btn-medium:hover {
   opacity: 1;
   text-decoration: none;
   color: white;
-  background-color: #18d099;
+  background-color:  #FC6E72;
 }
 
 .activity-btn {
     display: inline-block;
     margin-bottom: 0;
-    font-weight: 400;
+    font-weight: 600;
     text-align: center;
     vertical-align: middle;
     -ms-touch-action: manipulation;
@@ -465,7 +464,7 @@ padding-top: 5vh;
     background-image: none;
     border: 1px solid transparent;
     white-space: nowrap;
-    padding: 9px 11px;
+    padding: 14px 17px;
     font-size: 18px;
     margin-bottom: 7vh;
     line-height: 1.4;

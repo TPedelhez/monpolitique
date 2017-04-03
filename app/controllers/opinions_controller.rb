@@ -33,7 +33,7 @@ class OpinionsController < ApplicationController
 
     respond_to do |format|
       if @opinion.save
-        format.html { redirect_to opinion_path(@opinion.id), notice: 'Opinion was successfully created.' }
+        format.html { redirect_to new_card_opinion_path(card_id: rand(1..10)), notice: 'Opinion was successfully created.' }
         format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :new }
