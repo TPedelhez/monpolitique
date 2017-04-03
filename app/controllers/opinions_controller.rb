@@ -1,5 +1,5 @@
 class OpinionsController < ApplicationController
-  before_action :set_opinion, only: [:show, :edit, :update, :destroy]
+  # before_action :set_opinion, only: [:show, :edit, :update, :destroy]
 
   # GET /opinions
   # GET /opinions.json
@@ -26,14 +26,14 @@ class OpinionsController < ApplicationController
   # POST /opinions
   # POST /opinions.json
   def create
-  @opinion = Opinion.new(opinion_params)
+  @opinion = Opinion.new(:rate)
   @opinion.user_id = current_user.id
   @opinion.card = Card.find(params[:card_id])
 
 
     respond_to do |format|
       if @opinion.save
-        format.html { redirect_to new_card_opinion_path(card_id: rand(1..10)), notice: 'Opinion was successfully created.' }
+        format.html { redirect_to new_card_opinion_path(card_id: rand(1..10)) }
         format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :new }
@@ -43,18 +43,14 @@ class OpinionsController < ApplicationController
   end
 
 
-
   # PATCH/PUT /opinions/1
   # PATCH/PUT /opinions/1.json
   def update
     respond_to do |format|
-      if @opinion.update(opinion_params)
-        format.html { redirect_to opinion_path(opinion_params, @card), notice: 'Opinion was successfully updated.' }
+
+        format.html { redirect_to new_card_opinion_path(card_id: rand(1..10)) }
         format.json { render :show, status: :ok, location: @opinion }
-      else
-        format.html { render :edit }
-        format.json { render json: @opinion.errors, status: :unprocessable_entity }
-      end
+
     end
   end
 
@@ -75,8 +71,8 @@ class OpinionsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def opinion_params
-      params.require(:opinion).permit(:rate)
-    end
+    # def opinion_params
+    #   params.require(:opinion).permit(:rate)
+    # end
 
 end

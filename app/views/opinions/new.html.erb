@@ -1,5 +1,5 @@
 
-<div class="banner" style="background-color: #008489; background-position: center; height: 100vh;">
+<div class="banner" style="background-color: #57D1C9; background-position: center; height: 100vh;">
 
 
 <div class="card card-flexbox">
@@ -9,19 +9,24 @@
         <p class="card-day-title ">
           THEME
         </p>
-        <p class="card-instructions">
-          <a href="#" class="card-action card-action-flip hidden-xs" title="Click (or hit space/enter) to flip" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-            <i class="fa fa-refresh"></i>
-          </a>
-        </p>
         <div class="card-content" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-          <%= @card.candidate %>
-          <br>
-          <%= @card.description %>
-
+        <div>
+          <h1> <%= @card.candidate %> </h1>
+        </div>
+        <div>
+          <p style="margin-top:2em; margin-bottom: 4em;"> <%= @card.description %> </p>
+        </div>
           <div class="flex-item">
 
-             <%= render 'form', card: @card %>
+
+        </div>
+        <div>
+          <%= link_to "TRES DEFAVORABLE", new_card_opinion_path(card_id: @card.id, rate: -2), method: :patch, class: "activity-btn activity-btn-medium activity-btn-lg", style: "border-radius : 2px; background-color: #FF2E63" %>
+          <%= link_to "DEFAVORABLE", new_card_opinion_path(card_id: @card.id, rate: -1), method: :patch, class: "activity-btn activity-btn-medium activity-btn-lg", style: "border-radius : 2px; background-color: #FF2E63;" %>
+          <%= link_to "NEUTRE", new_card_opinion_path(card_id: @card.id, rate: 0), method: :patch, class: "activity-btn activity-btn-medium activity-btn-lg", style: "border-radius : 2px; background-color: #FF2E63;" %>
+          <%= link_to "FAVORABLE", new_card_opinion_path(card_id: @card.id, rate: 1), method: :patch, class: "activity-btn activity-btn-medium activity-btn-lg", style: "border-radius : 2px; background-color: #FF2E63;" %>
+          <%= link_to "TRES FAVORABLE", new_card_opinion_path(card_id: @card.id, rate: 2), method: :patch, class: "activity-btn activity-btn-medium activity-btn-lg", style: "border-radius : 2px; background-color: #FF2E63;" %>
+
         </div>
       </div>
     </div>
@@ -29,5 +34,4 @@
 
 </div>
 
-<%= link_to 'Back', cards_path %>
 
