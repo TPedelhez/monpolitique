@@ -1,16 +1,22 @@
 /* Main class */
 .navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  // box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: transparent;
   transition: all 0.3s ease;
   display: flex;
-  height: 70px;
+  height: 0px;
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
+  width: 98vw;
+}
+/* Optional class to fix the navbar on top */
+
+.connexion {
+  font-weight: 550;
+  letter-spacing: 1px;
 }
 
-/* Optional class to fix the navbar on top */
 .navbar-wagon-fixed {
   position: fixed;
   left: 0px;
@@ -18,53 +24,52 @@
   z-index: 1;
   width: 100%;
 }
-
 /* Navbar logo */
 .navbar-wagon-brand img {
-  width: 50px;
+  height: 60px;
 }
-
 /* Navbar right section (with form, links, button) */
 .navbar-wagon-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 /* Navbar item */
 .navbar-wagon-item {
-  flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
+  color: white;
+  position: relative;
+  margin-top: 6em;
 }
-
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: #616668;
+  color: white;
   font-size: 14px;
 }
+
 .navbar-wagon-link:hover {
   color: #da552f;
   text-decoration: none;
 }
-
 /* Navbar right button */
 .navbar-wagon-button {
   margin-left: 10px;
   padding: 0 20px;
-  border-radius: 20em;
+  border-radius: 3px;
   line-height: 40px;
-  background-color: #D23333;
+  background-color: #41D8A7;
   color: white;
   font-size: 14px;
-  border: 2px solid #D23333;
-}
-.navbar-wagon-button:hover {
-  color: white;
-  background: #D23333;
-  border-color: #ac2626;
+  border: 2px solid #41D8A7;
 }
 
+.navbar-wagon-button:hover {
+  color: white;
+  background: #41D8A7;
+
+
+}
 /* Navbar search form */
 .navbar-wagon-search {
   flex: 0 1 300px;
@@ -73,18 +78,9 @@
   padding: 0 10px;
   position: relative;
 }
-.navbar-wagon-search-btn {
-  line-height: 40px;
-  color: #E6E6E6;
-  border: none;
-  background: transparent;
-  position: absolute;
-  right: 14px;
-  top: -2px;
-  z-index: 1;
-}
 .navbar-wagon-search-input {
-  flex: 0 1 300px;
+  // flex: 0 1 300px;
+  width: 45vw;
   transition: all 0.15s ease;
   line-height: 40px;
   font-weight: lighter;
@@ -94,16 +90,25 @@
   padding: 0 10px;
   font-size: 14px;
   outline: none;
+  @media (max-width: $screen-xs $screen-sm $screen-md ) {
+     width: 100%;
+   }
 }
 .navbar-wagon-search-input:focus  {
   border: 1px solid #CCCCCC;
 }
-
 /* Navbar dropdown menu */
 .navbar-wagon-dropdown-menu {
   margin-top: 15px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.navbar-wagon-dropdown-menu img {
+  width: 100px;
+  height: 100px;
 }
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
@@ -111,7 +116,15 @@
   color: #999999 !important;
   font-size: 15px !important;
   line-height: 22px !important;
-  padding: 10px 20px;
+  padding: 10px 10px;
+}
+
+.unread-notif {
+  background-color: #00E7A9;
+}
+
+.navbar-wagon-dropdown-menu a {
+  padding-left: 0px;
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
@@ -128,4 +141,154 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+.btn-medium {
+  color: white;
+  border: 1px solid #27BF8E;
+  padding: 10px 15px;
+  border-radius: 3px;
+  opacity: 1;
+  background-color: #00E7A9;
+  @media (max-width: $screen-xs ) {
+  font-size: 13px;
+  padding: 5px;
+  }
+}
+
+.btn-medium:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: white;
+  background-color: #27BF8E;
+}
+.navbar-wagon-search-btn {
+  line-height: 40px;
+  color: #E6E6E6;
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 14px;
+  top: -2px;
+  z-index: 1;
+  position: absolute;
+  margin-top: 212px;
+  margin-right: 195px;
+  size: 40px;
+}
+.zero_notification {
+  margin-left: 19px;
+  color:#333333;
+  cursor: default;
+}
+.navbar-notification {
+  display: flex;
+}
+.navbar-right {
+  display: flex;
+}
+.landing-flexbox {
+  display: flex;
+  justify-content: space-between;
+}
+.landing-flexitem {
+  flex: 0 0 20%;
+}
+.activity-btn-medium {
+  color: white;
+  padding: 10px 15px;
+  border-radius: 2px;
+  font-weight: lighter;
+  opacity: 1;
+  background-color: #00E7A9;
+}
+
+.activity-btn-medium:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: white;
+  background-color: #18d099;
+}
+
+.activity-btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 9px 11px;
+    font-size: 18px;
+    margin-bottom: 7vh;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    @media (max-width: $screen-xs ) {
+    font-size: 15px;
+    margin: 10px;
+    padding: 10px;
+    margin-bottom: 4vh;
+   }
+
+}
+
+.nav-activity-btn-medium {
+  color: white;
+  padding: 10px 15px;
+  border-radius: 2px;
+  font-weight: lighter;
+  opacity: 1;
+  background-color: #00E7A9;
+}
+
+.nav-activity-btn-medium:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: white;
+  background-color: #18d099;
+}
+
+.nav-activity-btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    margin-left: 66vh;
+    margin-bottom: 9px;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 10px;
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    @media (max-width: $screen-xs ) {
+    font-size: 15px;
+    margin: 10px;
+    padding: 7px;
+   }
+}
+
+.search {
+  color: white;
+  font-size: 24px;
+  padding-top: 3px;
+  cursor: pointer;
 }

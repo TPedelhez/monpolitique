@@ -1,8 +1,8 @@
 <%= simple_form_for [@card, @opinion] do |f| %>
   <%= f.error_notification %>
 
-  <%= f.button :submit do %>
-  <% f = rate %>
-  <% end %>
-
+<%= f.input :rate, collection: -2..2, prompt: "Nb of stars", selected: 3 %>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
 <% end %>

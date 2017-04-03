@@ -1,5 +1,5 @@
 
-<div class="banner" style="background-color: #008489; background-position: center;">
+<div class="banner" style="background-color: #008489; background-position: center; height: 100vh;">
 
 
 <div class="card card-flexbox">
@@ -19,12 +19,12 @@
           <br>
           <%= @card.description %>
 
+          <div class="flex-item">
+
+             <%= render 'form', card: @card %>
         </div>
       </div>
     </div>
-
-
-<%= render 'form', opinion: [@card, @opinion] %>
 
 
 </div>
