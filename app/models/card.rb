@@ -5,4 +5,7 @@ class Card < ApplicationRecord
 
   validates :description, presence: true
   validates :candidate, presence: true
+  validates :category, presence: true
+
+
 end
