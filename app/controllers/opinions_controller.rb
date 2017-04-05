@@ -15,9 +15,9 @@ class OpinionsController < ApplicationController
   # GET /opinions/new
   def new
     @card = Card.find(params[:card_id])
-    @opinion = Opinion.new
-  end
 
+
+  end
 
   # GET /opinions/1/edit
   def edit
@@ -26,29 +26,39 @@ class OpinionsController < ApplicationController
   # POST /opinions
   # POST /opinions.json
   def create
-  @opinion = Opinion.new(:rate)
-  @opinion.user_id = current_user.id
-  @opinion.card = Card.find(params[:card_id])
-
-
+    @card = Card.find(params[:card_id])
+    @opinion = Opinion.new
+    @opinion.user_id = current_user.id
+    @opinion.card = Card.find(params[:card_id])
+    @opinion.rate = params[:rate]
     respond_to do |format|
       if @opinion.save
-        format.html { redirect_to new_card_opinion_path(card_id: rand(1..10)) }
+        format.html { redirect_to "http://localhost:3000/cards/29/opinions/new" }
         format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :new }
         format.json { render json: @opinion.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
 
   # PATCH/PUT /opinions/1
   # PATCH/PUT /opinions/1.json
   def update
+
+    @card = Card.find(params[:card_id])
+    @opinion = Opinion.new
+    @opinion.user_id = current_user.id
+    @opinion.card = Card.find(params[:card_id])
+    @opinion.rate = params[:rate]
+    @opinion.save
+
+
     respond_to do |format|
 
-        format.html { redirect_to new_card_opinion_path(card_id: rand(1..10)) }
+        format.html { redirect_to new_card_opinion_path(card_id: rand(21..35)) }
         format.json { render :show, status: :ok, location: @opinion }
 
     end
