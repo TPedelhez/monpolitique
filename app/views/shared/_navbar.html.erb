@@ -24,6 +24,9 @@
               <%= link_to "Mon Candidat", opinions_path %>
             </li>
             <li>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Qui sommes-nous ?</button>
+            </li>
+            <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Se déconnecter") %>
               <% end %>
