@@ -28,7 +28,7 @@
           "Jacques Cheminade" => c,
           "Jean Lassalle" => e,
           "Nathalie Arthaud" => n,
-          "Nicolas Dpt-Aignan" => i,
+          "Nicolas Dupont-Aignan" => i,
           "Philippe Poutou" => p,
           "Benoit Hamon" => h,
           "François Asselineau" => a,
@@ -53,7 +53,7 @@
         <% elsif opinion.card.candidate == "Philippe Poutou" %>
              <% hash["Philippe Poutou"] += opinion.rate %>
         <% elsif opinion.card.candidate == "Nicolas Dpt-Aignan" %>
-             <% hash["Nicolas Dpt-Aignan"] += opinion.rate %>
+             <% hash["Nicolas Dupont-Aignan"] += opinion.rate %>
         <% elsif opinion.card.candidate == "Jean Lassalle" %>
              <% hash["Jean Lassalle"] += opinion.rate %>
         <% elsif opinion.card.candidate == "Jacques Cheminade" %>
@@ -68,13 +68,13 @@
 
   <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; margin-right: 2em;   " id="modal_1">
     <div style="margin-right: 1em;">
-    <h1 style="font-weight: 500;">1er</h1>
+    <h1 style="font-weight: 500; margin-left: -73px;">1er</h1>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -5em; ">
 
       <div class="flex-item">
 
-        <img class="avatar" src="<%= image_path( results[10][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
+        <img class="avatar" src="<%= image_path( results[10][0] + ".jpg" ) %>" style="height: 20em ; width: 20em ;" >
       </div>
 
       <div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
@@ -94,25 +94,49 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[10][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[10][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[10][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -121,15 +145,30 @@
               <br>
               <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[10][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[10][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -142,11 +181,11 @@
 
   <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; " id="modal_1">
   <div style="margin-right: 1em;">
-    <h1 style="font-weight: 500;">2e</h1>
+    <h1 style="font-weight: 500; margin-left: -73px;">2e</h1>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -5em;">
       <div class="flex-item">
-        <img class="avatar" src="<%= image_path( results[9][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
+        <img class="avatar" src="<%= image_path( results[9][0] + ".jpg" ) %>" style="height: 15em ; width: 15em ;" >
       </div>
       <div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
         <div class="flex-item" style="margin-left: 9em;">
@@ -165,25 +204,49 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[9][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[9][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[9][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -192,15 +255,30 @@
               <br>
               <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[9][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[9][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -213,11 +291,11 @@
 
 <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; " id="modal_1">
 <div style="margin-right: 1em;">
-    <h1 style="font-weight: 500;">3e</h1>
+    <h1 style="font-weight: 500; margin-left: -73px;">3e</h1>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -5em;">
       <div class="flex-item">
-        <img class="avatar" src="<%= image_path( results[8][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
+        <img class="avatar" src="<%= image_path( results[8][0] + ".jpg" ) %>" style="height: 15em ; width: 15em ;" >
       </div>
       <div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
         <div class="flex-item" style="margin-left: 9em;">
@@ -236,25 +314,49 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[8][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[8][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <<% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[8][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -263,7 +365,14 @@
               <br>
               <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[8][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -271,7 +380,14 @@
               <h1>Opinions très défavorables</h1>
               <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[8][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -283,11 +399,11 @@
 
 <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; " id="modal_1">
 <div style="margin-right: 1em;">
-    <h1 style="font-weight: 500;">4e</h1>
+    <h1 style="font-weight: 500; margin-left: -73px;">4e</h1>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -5em;">
       <div class="flex-item">
-        <img class="avatar" src="<%= image_path( results[7][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
+        <img class="avatar" src="<%= image_path( results[7][0] + ".jpg" ) %>" style="height: 15em ; width: 15em ;" >
       </div>
       <div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
         <div class="flex-item" style="margin-left: 9em;">
@@ -306,25 +422,49 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[7][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[7][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[7][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -333,15 +473,30 @@
               <br>
               <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[7][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[7][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -353,11 +508,11 @@
 
   <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; " id="modal_1">
     <div style="margin-right: 1em;">
-      <h1 style="font-weight: 500;">5e</h1>
+      <h1 style="font-weight: 500; margin-left: -73px;">5e</h1>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -5em;">
       <div class="flex-item">
-        <img class="avatar" src="<%= image_path( results[6][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
+        <img class="avatar" src="<%= image_path( results[6][0] + ".jpg" ) %>" style="height: 15em ; width: 15em ;" >
       </div>
       <div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
         <div class="flex-item" style="margin-left: 9em;">
@@ -376,25 +531,49 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[6][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[6][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[6][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -403,15 +582,30 @@
               <br>
               <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[6][0]  && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[6][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -422,14 +616,14 @@
   </div>
 
 <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; margin-right: 2em;   " id="modal_1">
-    <div style="margin-right: 1em;">
-    <h1 style="font-weight: 500;">6e</h1>
+    <div style="margin-right: 1em; ">
+    <h1 style="font-weight: 500; margin-left: -73px;">6e</h1>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -5em; ">
 
       <div class="flex-item">
 
-        <img class="avatar" src="<%= image_path( results[5][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
+        <img class="avatar" src="<%= image_path( results[5][0] + ".jpg" ) %>" style="height: 15em ; width: 15em ;" >
       </div>
 
       <div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
@@ -449,25 +643,49 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[5][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[5][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[5][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -476,15 +694,30 @@
               <br>
               <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[5][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[5][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -496,13 +729,13 @@
 
   <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; margin-right: 2em;   " id="modal_1">
     <div style="margin-right: 1em;">
-    <h1 style="font-weight: 500;">7e</h1>
+    <h1 style="font-weight: 500; margin-left: -73px;">7e</h1>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -5em; ">
 
       <div class="flex-item">
 
-        <img class="avatar" src="<%= image_path( results[4][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
+        <img class="avatar" src="<%= image_path( results[4][0] + ".jpg" ) %>" style="height: 15em ; width: 15em ;" >
       </div>
 
       <div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
@@ -522,25 +755,49 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[4][0] } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[4][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[4][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -549,15 +806,30 @@
               <br>
               <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[4][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[4][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -569,13 +841,13 @@
 
   <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; margin-right: 2em;   " id="modal_1">
     <div style="margin-right: 1em;">
-    <h1 style="font-weight: 500;">8e</h1>
+    <h1 style="font-weight: 500; margin-left: -73px;">8e</h1>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -5em; ">
 
       <div class="flex-item">
 
-        <img class="avatar" src="<%= image_path( results[3][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
+        <img class="avatar" src="<%= image_path( results[3][0] + ".jpg" ) %>" style="height: 15em ; width: 15em ;" >
       </div>
 
       <div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
@@ -595,25 +867,49 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[3][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[3][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[3][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -622,7 +918,14 @@
               <br>
               <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[3][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -630,7 +933,14 @@
               <h1>Opinions très défavorables</h1>
               <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[3][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -642,13 +952,13 @@
 
   <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; margin-right: 2em;   " id="modal_1">
     <div style="margin-right: 1em;">
-    <h1 style="font-weight: 500;">9e</h1>
+    <h1 style="font-weight: 500; margin-left: -73px;">9e</h1>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -5em; ">
 
       <div class="flex-item">
 
-        <img class="avatar" src="<%= image_path( results[2][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
+        <img class="avatar" src="<%= image_path( results[2][0] + ".jpg" ) %>" style="height: 15em ; width: 15em ;" >
       </div>
 
       <div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
@@ -668,25 +978,49 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[2][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[2][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[2][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -695,15 +1029,30 @@
               <br>
               <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[2][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[2][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -715,13 +1064,13 @@
 
   <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; margin-right: 2em;   " id="modal_1">
     <div style="margin-right: 1em;">
-    <h1 style="font-weight: 500;">10e</h1>
+    <h1 style="font-weight: 500; margin-left: -73px;">10e</h1>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -5em; ">
 
       <div class="flex-item">
 
-        <img class="avatar" src="<%= image_path( results[1][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
+        <img class="avatar" src="<%= image_path( results[1][0] + ".jpg" ) %>" style="height: 15em ; width: 15em ;" >
       </div>
 
       <div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
@@ -741,25 +1090,49 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[1][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[1][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[1][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -768,15 +1141,30 @@
               <br>
               <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[1][0] } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[1][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -788,13 +1176,13 @@
 
   <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; margin-right: 2em;   " id="modal_1">
     <div style="margin-right: 1em;">
-    <h1 style="font-weight: 500;">11e</h1>
+    <h1 style="font-weight: 500; margin-left: -73px;">11e</h1>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -5em; ">
 
       <div class="flex-item">
 
-        <img class="avatar" src="<%= image_path( results[0][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
+        <img class="avatar" src="<%= image_path( results[0][0] + ".jpg" ) %>" style="height: 15em ; width: 15em ;" >
       </div>
 
       <div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;">
@@ -814,25 +1202,49 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[0][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[0][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[0][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -841,15 +1253,30 @@
               <br>
               <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[0][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
+              <br>
               <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[0][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
-              <p> <%= opinion.card.description %> </p>
+              <% content = opinion.card.description.split('.') %>
+              <div style="text-align: left;">
+                <ul>
+                  <% content.each do |mesure| %>
+                  <li style="margin-top:10px;"> <%= mesure + "." %>  </li>
+                  <% end %>
+                </ul>
+              </div>
               <br>
             <% end %>
             </div>
@@ -859,46 +1286,7 @@
     </div>
   </div>
 
-
-
-
-
-
-
 <div class="text-center" style="margin: 5em;">
-<%= link_to 'CONTINUER A VOTER', new_card_opinion_path(card_id: rand(6..10)), class: "activity-btn activity-btn-medium activity-btn-lg", style: "border-radius : 2px; background-color: #57D1C9;" %>
+  <%= link_to 'CONTINUER A VOTER', new_card_opinion_path(card_id: rand(6..10)), class: "activity-btn activity-btn-medium activity-btn-lg", style: "border-radius : 2px; background-color: #57D1C9;" %>
 </div>
-
-  <!-- <div class="row">
-    <div class="col-sm-6">
-
-          <div class="col-xs-12 col-sm-12">
-            <img class="avatar" src="<%= image_path( results[4][0] + ".jpg" ) %>" style="height: 30em ; width: 30em ;" >
-          </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="row">
-
-          <div class="col-xs-12 col-sm-6">
-            <img class="avatar" src="<%= image_path( results[3][0] + ".jpg" ) %>" style="height: 20em ; width: 20em ;" >
-          </div>
-
-
-          <div class="col-xs-12 col-sm-6">
-            <img class="avatar" src="<%= image_path( results[2][0] + ".jpg") %>" style="height: 15em ; width: 15em ;" >
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-xs-12 col-sm-6">
-            <img class="avatar" src="<%= image_path( results[1][0] + ".jpg") %>" style="height: 10em ; width:10em ;" >
-          </div>
-
-
-          <div class="col-xs-12 col-sm-6">
-            <img class="avatar" src="<%= image_path( results[0][0] + ".jpg") %>" style="height: 5em ; width: 5em ;" >
-          </div>
-      </div>
-    </div>
-  </div> -->
-
 
