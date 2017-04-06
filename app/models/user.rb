@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :opinions, dependent: :destroy
   has_many :cards, through: :opinions
 
+  validates :age, presence: true
+  validates :job, presence: true
+
 end

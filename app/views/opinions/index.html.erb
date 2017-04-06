@@ -1,5 +1,5 @@
 <div style="background-color: #F7F7F7 ;">
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path('elysee.jpg') %>'); background-position: center; height: 36vh;">
+ <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path('elysee.jpg') %>'); background-position: center;  height: 36vh;">
     <div class="landing-banner-content" style="margin-top: 6em;">
           <h1 class="home-title">Ton candidat est </h1>
     </div>
@@ -64,7 +64,7 @@
         <% end %>
 
 
-        <%= results = hash.sort_by { |candidate, vote| vote } %>
+        <% results = hash.sort_by { |candidate, vote| vote } %>
 
   <div class="col-xs-11  col-xs-offset-1" style="background-color: white; border-top-left-radius: 350px; border-bottom-left-radius: 350px; margin-top: 3em; margin-right: 2em;   " id="modal_1">
     <div style="margin-right: 1em;">
@@ -94,7 +94,7 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[10][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -102,7 +102,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -1  && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[10][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -110,7 +110,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[10][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -119,7 +119,7 @@
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions défavorables</h1>
               <br>
-              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[10][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -127,7 +127,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[10][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -165,7 +165,7 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2 && opinion.card.candidate ==  results[3][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[9][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -173,7 +173,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -1  && opinion.card.candidate ==  results[3][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[9][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -181,7 +181,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[3][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[9][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -190,7 +190,7 @@
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions défavorables</h1>
               <br>
-              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[3][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[9][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -198,7 +198,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[3][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[9][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -236,7 +236,7 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2 && opinion.card.candidate ==  results[2][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[8][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -244,7 +244,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -1  && opinion.card.candidate ==  results[2][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[8][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -252,7 +252,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[2][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[8][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -261,7 +261,7 @@
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions défavorables</h1>
               <br>
-              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[2][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[8][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -269,7 +269,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[2][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[8][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -306,7 +306,7 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2 && opinion.card.candidate ==  results[1][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[7][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -314,7 +314,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -1  && opinion.card.candidate ==  results[1][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[7][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -322,7 +322,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[1][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[7][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -331,7 +331,7 @@
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions défavorables</h1>
               <br>
-              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[1][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[7][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -339,7 +339,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[1][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[7][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -376,7 +376,7 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2 && opinion.card.candidate ==  results[0][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[6][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -384,7 +384,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -1  && opinion.card.candidate ==  results[0][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[6][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -392,7 +392,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[0][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[6][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -401,7 +401,7 @@
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions défavorables</h1>
               <br>
-              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[0][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[6][0]  && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -409,7 +409,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[0][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[6][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -449,7 +449,7 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[5][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -457,7 +457,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -1  && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[5][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -465,7 +465,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[5][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -474,7 +474,7 @@
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions défavorables</h1>
               <br>
-              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[5][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -482,7 +482,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[5][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -522,7 +522,7 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[4][0] } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -530,7 +530,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -1  && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[4][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -538,7 +538,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[4][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -547,7 +547,7 @@
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions défavorables</h1>
               <br>
-              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[4][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -555,7 +555,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[4][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -595,7 +595,7 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[3][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -603,7 +603,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -1  && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[3][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -611,7 +611,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[3][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -620,7 +620,7 @@
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions défavorables</h1>
               <br>
-              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[3][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -628,7 +628,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[3][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -668,7 +668,7 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[2][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -676,7 +676,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -1  && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[2][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -684,7 +684,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[2][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -693,7 +693,7 @@
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions défavorables</h1>
               <br>
-              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[2][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -701,7 +701,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[2][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -741,7 +741,7 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[1][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -749,7 +749,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -1  && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[1][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -757,7 +757,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[1][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -766,7 +766,7 @@
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions défavorables</h1>
               <br>
-              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[1][0] } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -774,7 +774,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[1][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -814,7 +814,7 @@
           <div class="row">
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +2 && opinion.card.candidate ==  results[0][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -822,7 +822,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions favorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -1  && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == +1  && opinion.card.candidate ==  results[0][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -830,7 +830,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions neutres</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == 0  && opinion.card.candidate ==  results[0][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -839,7 +839,7 @@
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions défavorables</h1>
               <br>
-              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[4][0] } %>
+              <% array = @opinions.select { |opinion| opinion.rate == -1 && opinion.card.candidate ==  results[0][0] && opinion.user_id == current_user.id } %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -847,7 +847,7 @@
             </div>
             <div class="col-xs-12 col-md-9 text-center" style="padding-left: 5vh;">
               <h1>Opinions très défavorables</h1>
-              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[4][0]} %>
+              <% array = @opinions.select { |opinion| opinion.rate == -2  && opinion.card.candidate ==  results[0][0] && opinion.user_id == current_user.id} %>
               <% array.each do |opinion| %>
               <p> <%= opinion.card.description %> </p>
               <br>
@@ -858,8 +858,6 @@
       </div>
     </div>
   </div>
-
-
 
 
 
