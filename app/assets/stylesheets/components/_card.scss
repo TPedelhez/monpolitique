@@ -34,15 +34,25 @@
   height: 100%;
   width: 7px;
   left: 0;
-  background-color: #FF5A5F;
+  background-color: #FF2E63;
 }
 
 .card-day-title {
-  color: #333333;
-  font-size: 14px;
+  color: #57D1C9;;
+  font-size: 20px;
+  font-weight: 900;
+
   position: absolute;
   top: 5px;
   left: 20px;
+  width: 297px;
+}
+
+.card-day-title:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: white;
+  color:  #50C4BE;
 }
 
 .card-content {

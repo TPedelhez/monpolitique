@@ -1,26 +1,32 @@
 
-<div class="banner" style="background-color: #57D1C9; background-position: center; height: 100vh;">
+<div class="banner" style="background-color: #FFFBCB; background-position: center; height: 100vh;">
 
 
 <div class="card card-flexbox">
     <div class="card-face card-front">
       <div class="card-wrapper">
         <div class="card-left-bar "></div>
-        <p class="card-day-title ">
-          <%= @card.category %>
+        <p class="card-day-title " style="font-color: #57D1C9;">
+          <%= link_to "DECOUVRE TON CANDIDAT ICI", opinions_path, {class: "card-day-title"} %>
         </p>
         <div class="card-content" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
         <div>
-          <h1> <%= @card.candidate %> </h1>
+             <h1 style="margin-top:1em; margin-bottom: 1em;"> <%= @card.category %> </h1>
         </div>
-        <div>
-          <p style="margin-top:2em; margin-bottom: 4em;"> <%= @card.description %> </p>
+        <div style="text-align: left;">
+        <ul>
+          <% content = @card.description.split(".") %>
+          <% content.each do |mesure| %>
+          <li style="margin-top:1em;"> <%= mesure + "." %>  </li>
+
+          <% end %>
+        </ul>
         </div>
           <div class="flex-item">
 
 
         </div>
-        <div>
+        <div style="margin-top: 2em;">
           <%= link_to "TRES DEFAVORABLE", new_card_opinion_path(card_id: @card.id, rate: -2), method: :patch, class: "activity-btn activity-btn-medium activity-btn-lg", style: "border-radius : 2px; background-color: #FF2E63" %>
           <%= link_to "DEFAVORABLE", new_card_opinion_path(card_id: @card.id, rate: -1), method: :patch, class: "activity-btn activity-btn-medium activity-btn-lg", style: "border-radius : 2px; background-color: #FF2E63;" %>
           <%= link_to "NEUTRE", new_card_opinion_path(card_id: @card.id, rate: 0), method: :patch, class: "activity-btn activity-btn-medium activity-btn-lg", style: "border-radius : 2px; background-color: #FF2E63;" %>
