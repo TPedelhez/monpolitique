@@ -8,4 +8,8 @@ def update_sanitized_params
   devise_parameter_sanitizer.permit(:sign_up) {|u| u.permit(:email, :password, :age, :job)}
 end
 
+ def after_sign_up_path_for(resource)
+    "http://www.google.com" # <- Path you want to redirect the user to.
+ end
+
 end
