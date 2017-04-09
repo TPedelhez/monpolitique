@@ -54,8 +54,12 @@ class OpinionsController < ApplicationController
     @opinion.card = Card.find(params[:card_id])
     @opinion.rate = params[:rate]
     @opinion.save
+
     a = []
-    a << params[:card_id].to_i
+    @opinion.each do |opinion|
+      a << opinion.card_id
+    end
+    a << params[:card_id]
 
     respond_to do |format|
 
